@@ -18,7 +18,7 @@ class JSON_API_Flow_Controller {
       $json_api->error("Include a 'until' query var.");
     }
     $sql = $wpdb->prepare(
-      "SELECT ID FROM $wpdb->posts WHERE ID < %d ORDER BY ID DESC LIMIT %d",
+      "SELECT ID FROM $wpdb->posts WHERE ID < %d AND post_type='post' ORDER BY ID DESC LIMIT %d",
       $until, $count);
     $results = $wpdb->get_results($sql);
     foreach ($results as $row) {
